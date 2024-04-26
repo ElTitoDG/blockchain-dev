@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28.1)
+cmake_minimum_required(VERSION 3.20)
 
 # Declaramos la variable del nombre del projecto
 set(PROJECT_NAME "blockchain-dev")
