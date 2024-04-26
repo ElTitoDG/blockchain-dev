@@ -1,0 +1,7 @@
+-std=c++17
+
+-L/usr/local/lib
+
+-I/usr/local/include
+
+-lfmt
