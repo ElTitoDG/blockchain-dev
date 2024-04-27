@@ -17,7 +17,7 @@ namespace blockchain
             CChain(int difficulty);                                     // Constructor
             void appendToCurrentBlock(uint8_t* data, uint32_t size);    // 
             void nextBlock();                                           // Continua al siguiente bloque
-            CBlock* getCurrentBlock();                                // Saca un puntero al bloque actual
+            CBlock* getCurrentBlock() { return mCurrentBlock; }                                // Saca un puntero al bloque actual
     };
 }
 

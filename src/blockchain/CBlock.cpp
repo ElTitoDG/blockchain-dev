@@ -53,10 +53,10 @@ void CBlock::calculateHash()
     delete[] buf;
 }
 
-uint8_t* CBlock::getHash()
+/* uint8_t* CBlock::getHash()
 {
     return mHash;
-}
+} */
 
 // Formato hexadecimal del Hash
 std::string CBlock::getHashStr()
@@ -73,11 +73,11 @@ std::string CBlock::getHashStr()
 }
 
 
-// Devuelve el puntero del bloque anterior
+/* // Devuelve el puntero del bloque anterior
 CBlock* CBlock::getPrevBlock()
 {
     return mPrevBlock;
-}
+} */
 
 
 void CBlock::appendData(uint8_t* data, uint32_t size)
@@ -117,7 +117,7 @@ void CBlock::mine(int difficulty)
     }
 }
 
-uint32_t CBlock::getNonce()
+/* uint32_t CBlock::getNonce()
 {
     return mNonce;
-}
+} */

@@ -23,7 +23,7 @@ void CChain::nextBlock()
 }
 
 
-CBlock* CChain::getCurrentBlock()
+/* CBlock* CChain::getCurrentBlock()
 {
     return mCurrentBlock;
-}
+} */

@@ -20,13 +20,13 @@ namespace blockchain
         public:
             CBlock(CBlock* prevBlock);                          // Constructor
             void calculateHash();                               // Calcula el hash en sha256
-            uint8_t* getHash();                                 // Saca el hash actual -> mHash
+            uint8_t* getHash() { return mHash; }                                 // Saca el hash actual -> mHash
             std::string getHashStr();                           // Saca la representacion de mHash en string
-            CBlock* getPrevBlock();                             // Recibe el puntero del bloque anterior 
+            CBlock* getPrevBlock() { return mPrevBlock; }                             // Recibe el puntero del bloque anterior 
             void appendData(uint8_t* data, uint32_t size);      // Añade datos a mData
             bool isDifficulty(int difficulty);                  // Dificultad
             void mine(int difficulty);                          // Mina un bloque
-            uint32_t getNonce();                                // Consigue el valor Nonce
+            uint32_t getNonce() { return mNonce; }                                // Consigue el valor Nonce
     };
 }
 
