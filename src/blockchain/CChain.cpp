@@ -23,7 +23,7 @@ bool CChain::isValid() const
         const CBlock &currentBlock = chain[i];
         const CBlock &prevBlock = chain[i - 1];
 
-        if (currentBlock.hash != currentBlock.calculateHash(1))
+        if (currentBlock.hash != currentBlock.calculateHash())
             return false;
         if (currentBlock.prevHash != prevBlock.hash)
             return false;

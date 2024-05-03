@@ -22,9 +22,9 @@ class CBlock
   public:
     std::string hash;
     std::string prevHash;
-    int hashNum;
+    // int hashNum;
     CBlock(int index, const std::string &data, const std::string &prevHash);
-    std::string calculateHash(int number) const;
+    std::string calculateHash() const;
     void mineBlock(int difficulty);
 };
 } // namespace blockchain

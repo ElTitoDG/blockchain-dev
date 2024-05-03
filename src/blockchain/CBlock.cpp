@@ -6,13 +6,13 @@ CBlock::CBlock(int index, const std::string &data, const std::string &prevHash)
     : index(index), data(data), prevHash(prevHash), nonce(0)
 {
     timestamp = std::chrono::system_clock::now();
-    hash = calculateHash(1);
+    hash = calculateHash();
 }
 
-std::string CBlock::calculateHash(int number) const
+std::string CBlock::calculateHash() const
 {
     std::stringstream ss;
-    ss << index << data << prevHash << number;
+    ss << index << data << prevHash;
     std::string str = ss.str();
 
     CryptoPP::SHA256 mhash;
@@ -31,12 +31,9 @@ std::string CBlock::calculateHash(int number) const
 void CBlock::mineBlock(int difficulty)
 {
     std::string target(difficulty, '0');
-    int number = 0;
-    while (hash.substr(0, difficulty) != target)
-    {
-        number++;
+    while (hash.substr(0, difficulty) != target) {
         nonce++;
-        hash = calculateHash(number);
+        hash = calculateHash();
     }
-    std::cout << "Block mined: " << hash << " with number: " << number << std::endl;
+    std::cout << "Block mined: " << hash << std::endl;
 }
