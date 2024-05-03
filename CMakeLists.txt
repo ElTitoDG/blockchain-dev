@@ -13,6 +13,6 @@ FILE(GLOB SRCS "${CMAKE_CURRENT_LIST_DIR}/src/blockchain/*.cpp"
 
                 # "${CMAKE_CURRENT_LIST_DIR}/src/blockchain/storage/*.cpp"
                 # "${CMAKE_CURRENT_LIST_DIR}/src/blockchain/net/*.cpp"
-                
+
 add_executable(${PROJECT_NAME} ${SRCS})
 target_link_libraries(${PROJECT_NAME} cryptopp) # pthread

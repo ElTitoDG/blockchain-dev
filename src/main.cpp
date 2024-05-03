@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     CChain chain(1);
     cout << "Cadena empezada" << endl;
 
-    CBlock* genesis = chain.getCurrentBlock();
+    // const CBlock* genesis = chain.getCurrentBlock();
 
     uint8_t* garbage = new uint8_t[32];
     for (uint32_t i = 0; i < 32; i++)
