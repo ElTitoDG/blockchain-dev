@@ -14,6 +14,21 @@ Este proyecto implementa una blockchain simple en C++, utilizando la librería [
 
 La clase `CBlock` representa un bloque en la blockchain. Los bloques son los componentes básicos de la blockchain y contienen información como el índice del bloque, un nonce (número utilizado una sola vez), una marca de tiempo, datos, el hash del bloque actual y el hash del bloque anterior.
 
+### Atributos
+
+* **`imdex`** (entero): El índice del bloque en la blockchain.
+* **`nonce`** (entero): Un número utilizado una sola vez que se usa en el proceso de minería.
+* **`timestamp`** (std::chrono::system_clock::time_point): La marca de tiempo que indica cuando se creó el bloque.
+* **`data`** (std::string): Los datos almacenados en el bloque (por ejemplo, información de transacciones).
+* **`hash`** (std::string): El hash del bloque actual, calculado a partir de los datos del bloque.
+* **`prevHash`** (std::string): El hash del bloque anterior en la blockchain.
+
+### Métodos
+
+* **`CBlock(int index, const std::string &data, const std::string &prevHash)`**: Constructor de la clase que inicializa el índice, los datos, el hash del bloque anterior y establece el nonce en 0. También calcula el hash del bloque actual utilizando el método calculateHash().
+* **`std::string calculateHash() const`**: Método que calcula el hash del bloque actual utilizando el algoritmo SHA-256 de la librería Crypto++. El hash se genera a partir de la concatenación del índice, los datos y el hash del bloque anterior.
+* **`void mineBlock(int difficulty)`**: Método que simula el proceso de minería ajustando el nonce hasta que se encuentre un hash válido según la dificultad especificada. Un hash es válido si tiene un número determinado de ceros al principio, donde el número de ceros depende de la dificultad.
+
 ### Archivo de encabezado (CBlock.hpp)
 
 ```cpp
