@@ -1,7 +1,8 @@
 #ifndef __C_BLOCK_INCLUDED__
 #define __C_BLOCK_INCLUDED__
 
-#include <openssl/sha.h>
+#include <cryptopp/sha.h>
+#include <cryptopp/hex.h>
 #include <string>
 
 namespace blockchain 
@@ -9,8 +10,8 @@ namespace blockchain
     class CBlock
     {
         private:
-            uint8_t mHash[SHA256_DIGEST_LENGTH];                // Hash actual
-            uint8_t mPrevHash[SHA256_DIGEST_LENGTH];            // Hash previo
+            uint8_t mHash[CryptoPP::SHA256::DIGESTSIZE];                // Hash actual
+            uint8_t mPrevHash[CryptoPP::SHA256::DIGESTSIZE];            // Hash previo
             CBlock* mPrevBlock;                                 // Puntero al bloque anterior, sera nulo
             uint8_t* mData;                                     // Byte de datos de la transacción
             uint32_t mDataSize;                                 // Tamaño de los datos
