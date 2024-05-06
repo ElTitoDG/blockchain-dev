@@ -7,7 +7,7 @@
 class CChain
 {
   private:
-    std::vector<CBlock> chain; // Lista de bloques
+    std::vector<CBlock> chain;  // Lista de bloques
     int mDifficulty;            // Dificultad
 
   public:

@@ -38,7 +38,8 @@ void CBlock::mineBlock(int difficulty)
 }
 
 
-std::string CBlock::addZeros(std::string str, int num) {
+std::string CBlock::addZeros(std::string str, int num)
+{
     // Asegurarnos de que el número de ceros no supere la longitud de la cadena
     num = std::min(num, static_cast<int>(str.length()));
 
