@@ -2,52 +2,20 @@
 #include <iostream>
 
 using namespace std;
-using namespace blockchain;
 
-int main(int argc, char **argv)
+int main()
 {
-    cout << "Start" << endl;
 
-    CChain chain(1);
-    cout << "Cadena empezada" << endl;
+    CChain blockchain(2);
 
-    CBlock* genesis = chain.getCurrentBlock();
+    blockchain.addBlock("This is the first block");
+    blockchain.addBlock("This is the second block");
+    blockchain.addBlock("This is the third block");
 
-    uint8_t* garbage = new uint8_t[32];
-    for (uint32_t i = 0; i < 32; i++)
-        garbage[i] = time(0) % 255;
-
-    cout << "Contenido basura generado" << endl;
-
-    chain.appendToCurrentBlock(garbage, 32);
-    delete[] garbage;
-
-    cout << "Datos añadidos al bloque" << endl;
-
-    chain.nextBlock();
-
-    cout << "Siguiente bloque minado" << endl;
-
-    cout << "Hash del Genesis: " << chain.getCurrentBlock()->getPrevBlock()->getHashStr() 
-                                 << endl << "Nonce: " <<  chain.getCurrentBlock()->getNonce() << endl;
-
-    garbage = new uint8_t[32];
-    for (uint32_t i = 0; i < 32; i++)
-        garbage[i] = time(0) % 255;
-
-    cout << "Contenido basura generado" << endl;
-
-    chain.appendToCurrentBlock(garbage, 32);
-    delete[] garbage;
-
-    cout << "Datos añadidos al bloque" << endl;
-
-    chain.nextBlock();
-
-    cout << "Siguiente bloque minado" << endl;
-
-    cout << "Hash del bloque previo: " << chain.getCurrentBlock()->getPrevBlock()->getHashStr() 
-                                 << endl << "Nonce: " <<  chain.getCurrentBlock()->getNonce() << endl;
+    if (blockchain.isValid())
+        std::cout << "Blockchain is valid" << std::endl;
+    else
+        std::cout << "Blockchain is not valid" << std::endl;
 
     return 0;
 

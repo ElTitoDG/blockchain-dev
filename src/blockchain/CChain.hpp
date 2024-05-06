@@ -1,25 +1,20 @@
-#ifndef __C_CHAIN_INCLUDE__
-#define __C_CHAIN_INCLUDE__
+#ifndef C_CHAIN_INCLUDE_
+#define C_CHAIN_INCLUDE_
 
 #include "CBlock.hpp"
 #include <vector>
 
-namespace blockchain
+class CChain
 {
-    class CChain
-    {
-        private:
-            std::vector<CBlock> mChain;                                 // Lista de bloques
-            CBlock* mCurrentBlock;                                      // Puntero al bloque actual
-            int mDifficulty;                                            // Dificultad
+  private:
+    std::vector<CBlock> chain; // Lista de bloques
+    int mDifficulty;            // Dificultad
 
-        public:
-            CChain(int difficulty);                                     // Constructor
-            void appendToCurrentBlock(uint8_t* data, uint32_t size);    // 
-            void nextBlock();                                           // Continua al siguiente bloque
-            CBlock* getCurrentBlock() { return mCurrentBlock; }                                // Saca un puntero al bloque actual
-    };
-}
+  public:
+    explicit CChain(int difficulty) : mDifficulty(difficulty) { chain.push_back(createGenesisBlock()); }; // Constructor
+    static CBlock createGenesisBlock() { return CBlock(0, "Genesis Block", "0"); }
+    void addBlock(const std::string &data);
+    bool isValid() const;
+};
 
-
-#endif // __C_CHAIN_INCLUDE__
+#endif // C_CHAIN_INCLUDE_

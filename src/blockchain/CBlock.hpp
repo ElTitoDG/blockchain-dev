@@ -1,33 +1,31 @@
-#ifndef __C_BLOCK_INCLUDED__
-#define __C_BLOCK_INCLUDED__
+#ifndef C_BLOCK_INCLUDED_
+#define C_BLOCK_INCLUDED_
 
-#include <openssl/sha.h>
+#include <chrono>
+#include <cryptopp/config.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/sha.h>
+#include <iostream>
+#include <sstream>
 #include <string>
 
-namespace blockchain 
+class CBlock
 {
-    class CBlock
-    {
-        private:
-            uint8_t mHash[SHA256_DIGEST_LENGTH];                // Hash actual
-            uint8_t mPrevHash[SHA256_DIGEST_LENGTH];            // Hash previo
-            CBlock* mPrevBlock;                                 // Puntero al bloque anterior, sera nulo
-            uint8_t* mData;                                     // Byte de datos de la transacción
-            uint32_t mDataSize;                                 // Tamaño de los datos
-            time_t mCratedTS;                                   // Timestamp de la creación del bloque
-            uint32_t mNonce;                                    // Nonce del bloque
+  private:
+    int index;
+    int nonce;
+    std::chrono::system_clock::time_point timestamp;
+    std::string data;
 
-        public:
-            CBlock(CBlock* prevBlock);                          // Constructor
-            void calculateHash();                               // Calcula el hash en sha256
-            uint8_t* getHash() { return mHash; }                // Saca el hash actual -> mHash
-            std::string getHashStr();                           // Saca la representacion de mHash en string
-            CBlock* getPrevBlock() { return mPrevBlock; }       // Recibe el puntero del bloque anterior 
-            void appendData(uint8_t* data, uint32_t size);      // Añade datos a mData
-            bool isDifficulty(int difficulty);                  // Dificultad
-            void mine(int difficulty);                          // Mina un bloque
-            uint32_t getNonce() { return mNonce; }              // Consigue el valor Nonce
-    };
-}
+    static std::string addZeros(std::string str, int num) ;
 
-#endif // __C_BLOCK_INCLUDED__
+  public:
+    std::string hash;
+    std::string prevHash;
+    // int hashNum;
+    CBlock(int index, const std::string &data, const std::string &prevHash);
+    std::string calculateHash(int difficulty) const;
+    void mineBlock(int difficulty);
+};
+
+#endif // C_BLOCK_INCLUDED_
