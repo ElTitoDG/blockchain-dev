@@ -4,8 +4,6 @@
 #include "CBlock.hpp"
 #include <vector>
 
-namespace blockchain
-{
 class CChain
 {
   private:
@@ -13,11 +11,10 @@ class CChain
     int mDifficulty;            // Dificultad
 
   public:
-    explicit CChain(int difficulty); // Constructor
+    explicit CChain(int difficulty) : mDifficulty(difficulty) { chain.push_back(createGenesisBlock()); }; // Constructor
     static CBlock createGenesisBlock() { return CBlock(0, "Genesis Block", "0"); }
     void addBlock(const std::string &data);
     bool isValid() const;
 };
-} // namespace blockchain
 
 #endif // C_CHAIN_INCLUDE_

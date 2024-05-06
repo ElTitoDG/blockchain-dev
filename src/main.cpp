@@ -2,12 +2,11 @@
 #include <iostream>
 
 using namespace std;
-using namespace blockchain;
 
 int main()
 {
 
-    CChain blockchain(0);
+    CChain blockchain(2);
 
     blockchain.addBlock("This is the first block");
     blockchain.addBlock("This is the second block");

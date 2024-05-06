@@ -1,13 +1,5 @@
 #include "CChain.hpp"
 
-using namespace blockchain;
-
-CChain::CChain(int difficulty)
-    : mDifficulty(difficulty)
-{
-    chain.push_back(createGenesisBlock());
-}
-
 void CChain::addBlock(const std::string &data)
 {
     CBlock newBlock(chain.size(), data, chain.back().hash);
@@ -23,7 +15,7 @@ bool CChain::isValid() const
         const CBlock &currentBlock = chain[i];
         const CBlock &prevBlock = chain[i - 1];
 
-        if (currentBlock.hash != currentBlock.calculateHash())
+        if (currentBlock.hash != currentBlock.calculateHash(2))
             return false;
         if (currentBlock.prevHash != prevBlock.hash)
             return false;

@@ -9,8 +9,6 @@
 #include <sstream>
 #include <string>
 
-namespace blockchain
-{
 class CBlock
 {
   private:
@@ -19,14 +17,15 @@ class CBlock
     std::chrono::system_clock::time_point timestamp;
     std::string data;
 
+    static std::string addZeros(std::string str, int num) ;
+
   public:
     std::string hash;
     std::string prevHash;
     // int hashNum;
     CBlock(int index, const std::string &data, const std::string &prevHash);
-    std::string calculateHash() const;
+    std::string calculateHash(int difficulty) const;
     void mineBlock(int difficulty);
 };
-} // namespace blockchain
 
 #endif // C_BLOCK_INCLUDED_
