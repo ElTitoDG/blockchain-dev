@@ -43,16 +43,8 @@ std::string CBlock::addZeros(std::string str, int num)
     // Asegurarnos de que el número de ceros no supere la longitud de la cadena
     num = std::min(num, static_cast<int>(str.length()));
 
-    // Revertir la cadena
-    std::reverse(str.begin(), str.end());
-
-    // Insertar los ceros al principio (ahora al final debido a la reversión)
-    for(int i = 0; i < num; i++) {
-        str += '0';
-    }
-
-    // Revertir la cadena de nuevo
-    std::reverse(str.begin(), str.end());
+    // Añadimos los ceros al principio de la string
+    str.insert(0, num, '0');
 
     return str;
 }
