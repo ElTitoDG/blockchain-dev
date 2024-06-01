@@ -18,5 +18,4 @@ int main()
         std::cout << "Blockchain is not valid" << std::endl;
 
     return 0;
-
 }
